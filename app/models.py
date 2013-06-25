@@ -4,6 +4,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Float, ForeignKey
 from sqlalchemy.orm import relationship, backref
 
+from utils import remover_acentos
+
 Base = declarative_base()
 
 class Nome(Base):
@@ -25,7 +27,7 @@ class Nome(Base):
         self.normalizar()
 
     def normalizar(self):
-        sem_acentos = normalize('NFKD', self.nome).encode('ASCII', 'ignore').decode('ASCII')
+        sem_acentos = remover_acentos(self.nome)
         self.nome_normalizado = sem_acentos.lower()
         self.nome_invertido = self.nome_normalizado[::-1]
 

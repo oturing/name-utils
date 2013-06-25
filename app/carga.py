@@ -23,6 +23,6 @@ def carregar(url_bd, nome_arq):
 
 if __name__=='__main__':
     url_bd = 'sqlite:///nomes.sqlite'
-    #criar_tabelas(url_bd)
+    criar_tabelas(url_bd)
     carregar(url_bd, sys.argv[1])
 
